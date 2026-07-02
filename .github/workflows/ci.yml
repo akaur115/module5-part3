@@ -1,0 +1,29 @@
+name: Module 5 Part 3 CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Check Required Folders
+        run: |
+          test -d backend
+          test -d studentportfolio
+          test -d transactions
+
+      - name: Check Required Files
+        run: |
+          test -f docker-compose.yml
+          test -f nginx.conf
+
+      - name: Success
+        run: echo "Module 5 Part 3 Passed"
+ 
